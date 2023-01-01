@@ -25,13 +25,24 @@ const postsSlice = createSlice({
             }
         },
 
-        editPost: (state, actions) => { 
-            const post = state.find( (post) => post.id === actions.payload.id )
-            if (post) {
-                post.content = actions.payload.content
-                post.title = actions.payload.title
+        editPost: {
+            reducer(state, actions) {
+                const post = state.find( (post) => post.id === actions.payload.id )
+                if (post) {
+                    post.title = actions.payload.title
+                    post.content = actions.payload.content
+                }
+            },
+            prepare(id, title, content) {
+                return ({
+                    payload: {
+                        id,
+                        title,
+                        content
+                    }
+                })
             }
-         }
+        }
     }
 });
 

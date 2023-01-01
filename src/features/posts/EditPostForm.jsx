@@ -15,7 +15,8 @@ export const EditPostForm = ({ match }) => {
     const history = useHistory();
 
     const handleSave = () => {
-        dispatch(editPost({ id: postId, title, content }))
+        console.log(editPost(postId, title, content))
+        dispatch(editPost(postId, title, content))
         history.push(`/posts/${postId}`)
     } 
 
@@ -25,21 +26,9 @@ export const EditPostForm = ({ match }) => {
             <h2>Edit Post</h2>
             <form>
                 <label htmlFor="postTitle">Post Title:</label>
-                <input
-                type="text"
-                id="postTitle"
-                name="postTitle"
-                placeholder="What's on your mind?"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
+                <input type="text" id="postTitle" name="postTitle" placeholder="What's on your mind?" value={title} onChange={(e) => setTitle(e.target.value)} />
                 <label htmlFor="postContent">Content:</label>
-                <textarea
-                id="postContent"
-                name="postContent"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                />
+                <textarea id="postContent" name="postContent" value={content} onChange={(e) => setContent(e.target.value)} />
             </form>
             <button type="button" onClick={handleSave}>
                 Save Post
