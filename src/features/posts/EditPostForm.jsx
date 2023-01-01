@@ -15,7 +15,6 @@ export const EditPostForm = ({ match }) => {
     const history = useHistory();
 
     const handleSave = () => {
-        console.log(editPost(postId, title, content))
         dispatch(editPost(postId, title, content))
         history.push(`/posts/${postId}`)
     } 
